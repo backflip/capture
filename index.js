@@ -35,17 +35,17 @@ function capture(urls, options, callback) {
   options = options || {};
 
   var captureScript = path.join(__dirname, 'phantomjs/capture.js'),
-      phantomPath = options.phantomBin || PHANTOMJS_BIN,
-      outPath = options.out || OUT_PATH,
-      format = options.format || OUT_FORMAT,
-      viewportWidth = options.viewportWidth || OUT_VIEWPORT_WIDTH,
-      viewportHeight = options.viewportHeight || OUT_VIEWPORT_HEIGHT,
-      paperOrientation = options.paperOrientation || OUT_PAPER_ORIENTATION,
-      paperFormat = options.paperFormat || OUT_PAPER_FORMAT,
-      paperMargin = options.paperMargin || OUT_PAPER_MARGIN,
-      username = options.username || false,
-      password = options.password || false,
-      verbose = options.verbose || false;
+      phantomPath = options.P || PHANTOMJS_BIN,
+      outPath = options.o || OUT_PATH,
+      format = options.f || OUT_FORMAT,
+      viewportWidth = options.vw || OUT_VIEWPORT_WIDTH,
+      viewportHeight = options.vh || OUT_VIEWPORT_HEIGHT,
+      paperOrientation = options.po || OUT_PAPER_ORIENTATION,
+      paperFormat = options.pf || OUT_PAPER_FORMAT,
+      paperMargin = options.pm || OUT_PAPER_MARGIN,
+      username = options.u || false,
+      password = options.p || false,
+      verbose = options.v || false;
 
   // throttle phantom processes spawns to 10
   async.forEachLimit(urls, MAX_PHANTOMJS_SPAWNS,
@@ -127,9 +127,9 @@ function main() {
         'type': 'string',
         'description': 'Minimum viewport width',
         'alias': 'vw',
-		'default': OUT_VIEWPORT_WIDTH
+        'default': OUT_VIEWPORT_WIDTH
       },
-	  'viewport-height': {
+      'viewport-height': {
         'type': 'string',
         'description': 'Minimum viewport height',
         'alias': 'vh',
@@ -139,13 +139,13 @@ function main() {
         'type': 'string',
         'description': 'Size of the individual PDF pages (A4, letter)',
         'alias': 'pf',
-		'default': OUT_PAPER_FORMAT
+        'default': OUT_PAPER_FORMAT
       },
       'paper-orientation': {
         'type': 'string',
         'description': 'Orientation of the PDF pages (portrait, landscape)',
         'alias': 'po',
-		'default': OUT_PAPER_ORIENTATION
+        'default': OUT_PAPER_ORIENTATION
       },
       'paper-margin': {
         'type': 'string',
